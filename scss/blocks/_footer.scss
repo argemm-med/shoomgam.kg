@@ -1,0 +1,121 @@
+.footer {
+       background-color: #111111;
+       color: #fff;
+       .footer__container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 50px 0;
+       }
+       .footer__map {
+              border-radius: 10px;
+              margin-right: 40px;
+              height: 350px;
+              flex-basis: 40%;
+       }
+       .footer__content {
+              flex-basis: 50%;
+              .footer__title {
+                     @include adaptiv-font(28, 20);
+                     margin-bottom: 20px;
+                     line-height: 1.5;
+              }
+              .footer__text {
+                     @include adaptiv-font(20, 12);
+                     line-height: calc(25/15);
+                     margin-bottom: 30px;
+                     a {
+                            color: #fff;
+                     }
+                     .footer__adress {
+                            margin-bottom: 20px;
+                            display: inline-block;
+                     }
+                     .footer__number:not(:last-child) {
+                            display: inline-block;
+                            margin-right: 25px;
+                     }
+              }
+              .footer__contacts {
+                     .footer__link {
+                            &:not(:last-child) {
+                                   margin-right: 30px;
+                            }
+                     }
+                     .fa {
+                            color: #000;
+                            height: 40px;
+                            width: 40px;
+                            text-align: center;
+                            line-height: 40px;
+                            cursor: pointer;
+                            background-color: #fff;
+                            border-radius: 9px;
+                            font-size: 20px;
+                            transition: all .3s ease;
+                            &:hover {
+                                   color: #fff;
+                                   transform: translateY(-2px);
+                            }
+                     }
+                     .facebook:hover {
+                            i.fa {
+                                   background-color: #3b5999;
+                            }
+                     }
+                     .whatsapp:hover {
+                            i.fa {
+                                   background-color: rgb(75, 236, 104);
+                            }
+                     }
+                     .instagram:hover {
+                            i.fa {
+                                   background-color: #e4405f;
+                            }
+                     }
+              }
+       }
+       .footer__made-by {
+              padding: 10px 0;
+              text-align: center;
+              a {
+                     text-decoration: underline;
+                     @include adaptiv-font(14, 12);
+                     color: #fff;
+                     font-style: italic;
+                     span {
+                            font-style: normal;
+                     }
+              }
+       }
+}
+@media (max-width:$md2+px) {
+       .footer {
+              .footer__map {
+                     height: 300px;
+              }
+       }
+}
+@media (max-width:$md3+px) {
+       .footer {
+              padding: 20px 10px;
+              .footer__container {
+                     flex-wrap: wrap;
+              }
+              .footer__map {
+                     flex-basis: 100%;
+                     height: 200px;
+                     margin: 0 0 30px;
+              }
+              .footer__content {
+                     flex-basis: 100%;
+              }
+              .footer__title {
+                     margin-bottom: 10px;
+              }
+              .footer__text {
+                     margin-bottom: 10px;
+                     max-width: 90%;
+              }
+       }
+}

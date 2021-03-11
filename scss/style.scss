@@ -1,0 +1,55 @@
+@import "root/root";
+@import "root/preloader";
+@import "root/modal";
+@import "root/widget";
+@import "blocks/header";
+@import "blocks/main";
+@import "blocks/shop";
+@import "blocks/banner-slider";
+@import "blocks/footer";
+@import "new";
+.btn {
+       @include adaptiv-font(16, 11);
+       background-color: #fff;
+       border: 2px solid rgb(255, 105, 0);
+       color: rgb(255, 105, 0);
+       height: 30px;
+       padding: 0 20px;
+       border-radius: 10px;
+       position: relative;
+       overflow: hidden;
+       text-transform: capitalize;
+       display: block;
+       transition: all 300ms ease;
+       &:before {
+              position: absolute;
+              content: '';
+              width: 0%;
+              height: 100%;
+              background: rgb(255, 105, 0);
+              top: 0;
+              left: auto;
+              right: 0;
+              z-index: -1;
+              transition: all 300ms ease;
+       }
+       &:hover {
+              color: white;
+              box-shadow: none;
+              z-index: 1;
+              &:before {
+                     width: 100%;
+                     height: 100%;
+                     background: rgb(255, 105, 0);
+                     top: 0;
+                     left: 0;
+                     right: 0;
+              }
+       }
+       @media (max-width:$md3+px) {
+              padding: 0 3px;
+       }
+       @media (max-width:$md4+px) {
+              padding: 0 10px;
+       }
+}

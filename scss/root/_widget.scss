@@ -1,0 +1,88 @@
+.widget {
+       @include adaptiv-font(18, 16);
+       z-index: 10;
+       position: fixed;
+       bottom: 20px;
+       right: 10px;
+       border-radius: 50%;
+       box-shadow: 0 0px 10px #000;
+       transition: all .7s ease;
+       &:hover {
+              box-shadow: 0 0px 5px #000;
+       }
+       .share {
+              background-color: #fff;
+              border-radius: 50%;
+              i.fa {
+                     height: 50px;
+                     width: 50px;
+                     text-align: center;
+                     line-height: 50px;
+                     cursor: pointer;
+                     background-color: #fff;
+                     border-radius: 50%;
+                     @media (max-width:$md3+px) {
+                            width: 40px;
+                            height: 40px;
+                            line-height: 40px;
+                     }
+              }
+              &:hover,
+              &:active {
+                     .submenu {
+                            @for $i from 1 through 5 {
+                                   li:nth-child(#{$i}) {
+                                          border-radius: 50%;
+                                          box-shadow: 0 0px 5px #000;
+                                          opacity: 1;
+                                          top:#{-$i*51}px;
+                                          transition-delay:#{$i*0.08}s;
+                                          transform: rotateY(0deg);
+                                          @media (max-width:$md3+px) {
+                                                 top:#{-$i*41}px;
+                                          }
+                                   }
+                            }
+                     }
+              }
+       }
+       .submenu {
+              li {
+                     transition: all ease-in-out 0.5s;
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     z-index: -1;
+                     opacity: 0;
+                     a {
+                            color: #212121;
+                            &:hover {
+                                   i.fa {
+                                          color: #fff;
+                                          border-radius: 50%;
+                                   }
+                                   &.facebook {
+                                          i.fa {
+                                                 background-color: #3b5999;
+                                          }
+                                   }
+                                   &.whatsapp {
+                                          i.fa {
+                                                 background-color: rgb(75, 236, 104);
+                                          }
+                                   }
+                                   &.instagram {
+                                          i.fa {
+                                                 background-color: #e4405f;
+                                          }
+                                   }
+                            }
+                     }
+              }
+              @for $i from 1 through 4 {
+                     li:nth-child(#{$i}) {
+                            transform:rotateX(#{$i*45}deg);
+                     }
+              }
+       }
+}

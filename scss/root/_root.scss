@@ -1,0 +1,99 @@
+@mixin header__link-top {
+    color: #fff;
+    padding: 5px;
+    font-weight: 700;
+}
+@mixin header__link-moved {
+    color: #000;
+}
+$text-ff:'Roboto',sans-serif;
+/*______________________________________________Выбор текста______*/
+::selection {
+    background-color: #000;
+    color: #fff;
+}
+/*______________________________________________Шрифты______*/
+@font-face {
+    font-family: 'Lato', sans-serif;
+    src: url('../fonts/lato-black-webfont.woff2') format('woff2'),
+        url('../fonts/lato-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato', sans-serif;
+    src: url('../fonts/lato-bold-webfont.woff2') format('woff2'),
+        url('../fonts/lato-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato', sans-serif;
+    src: url('../fonts/lato-regular-webfont.woff2') format('woff2'),
+        url('../fonts/lato-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+        url('../fonts/roboto-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+/*______________________________________________Шрифт по умолчанию______*/
+$fontfamily: 'Lato',sans-serif;
+/*______________________________________________Обнуление стилей______*/
+@import"reset";
+/*______________________________________________Container______*/
+$minwidth: 320px;
+$mw: 1200;
+$md1: $mw+12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+.container {
+    max-width: $mw + px;
+    margin: 0 auto;
+    width: 100%;
+    @media (max-width: $md1+px) {
+        max-width: 970px;
+    }
+    @media (max-width: $md2+px) {
+        max-width: 750px;
+    }
+    @media (max-width: $md3+px) {
+        max-width: none;
+    }
+}
+/*______________________________________________Адаптивный шрифт______*/
+$maxWidth: 1200;
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+/*______________________________________________Общие параметры______*/
+body {
+    .wrapper {
+        width: 100%;
+        min-height: 100%;
+        overflow: hidden;
+    }
+    &.lock{
+        overflow: hidden;
+    }
+    &::-webkit-scrollbar {
+        width: 5px;
+        @media (max-width:$md4+px) {
+            display: none;
+        }
+        &-track {
+            background: #fff;
+        }
+        &-thumb {
+            background-color: rgb(255, 105, 0);
+            border-radius: 30px;
+        }
+    }
+}

@@ -1,0 +1,415 @@
+.popup {
+       z-index: 100;
+       position: fixed;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.8);
+       top: 0;
+       left: 0;
+       opacity: 0;
+       visibility: hidden;
+       overflow-y: auto;
+       overflow-x: hidden;
+       transition: all 0.5s ease 0s;
+       .popup__body {
+              min-height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease 0s;
+       }
+       .popup__content {
+              border-radius: 30px;
+              background-color: #fff;
+              width: 90%;
+              color: #000;
+              padding: 10px 0 25px;
+              position: relative;
+              transition: all 0.6s ease 0s;
+              opacity: 0;
+              transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+              &.on {
+                     width: 40%;
+                     .empty-block {
+                            padding: 0 20px;
+                     }
+              }
+       }
+       &.open {
+              opacity: 1;
+              visibility: visible;
+              .popup__content {
+                     transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+                     opacity: 1;
+              }
+       }
+}
+.popup__content {
+       .header-popup {
+              box-shadow: 0 8px 7px -7px #000;
+              padding: 10px 20px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              .logo-name {
+                     width: 200px;
+                     height: auto;
+                     margin-left: 20px;
+              }
+              .popup-close {}
+       }
+       .main-popup {
+              display: none;
+              &.on {
+                     display: block;
+              }
+       }
+       .wish__list {}
+       .wish__item {
+              padding: 20px;
+              grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+              align-items: center;
+              display: grid;
+              &:not(:last-child) {
+                     border-bottom: 1px solid rgb(132, 125, 125);
+              }
+              .wish__img-wrapper {
+                     width: 70px;
+                     height: 70px;
+                     position: relative;
+                     .wish__img {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            object-position: center;
+                            border-radius: 50%;
+                     }
+              }
+              .wish__name {
+                     margin-left: 10px;
+                     grid-area: 1 / 2 / 2 / 4;
+                     font-size: 25px;
+                     line-height: calc(30/25);
+                     text-transform: uppercase;
+              }
+              .wish__price {
+                     justify-self: center;
+                     grid-area: 1 / 4 / 2 / 5;
+                     .price {}
+              }
+              .wish__quantity {
+                     justify-self: center;
+                     grid-area: 1 / 5 / 2 / 6;
+                     display: flex;
+                     height: 30px;
+                     button {
+                            height: 100%;
+                            width: 40px;
+                            font-weight: 900;
+                            font-size: 18px;
+                            &:hover {
+                                   color: rgb(255, 105, 0);
+                            }
+                            &:first-child {
+                                   border-radius: 8px 0 0 8px;
+                            }
+                            &:last-child {
+                                   border-radius: 0 8px 8px 0;
+                            }
+                     }
+                     input {
+                            background-color: #eee;
+                            width: 30px;
+                            text-align: center;
+                            height: 100%;
+                     }
+                     input::-webkit-outer-spin-button,
+                     input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                     }
+              }
+              .wish-spicy {
+                     justify-self: center;
+                     grid-area: 1 / 6 / 2 / 8;
+              }
+              .wish__delete {
+                     justify-self: end;
+                     background-color: transparent;
+                     grid-area: 1 / 8 / 2 / 9;
+                     width: 25px;
+                     height: 25px;
+              }
+       }
+       .total-price {
+              margin: 20px 0 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 20px;
+              .total-cart {
+                     margin-left: 20px;
+              }
+       }
+       .bottom-popup {
+              grid-area: 4 / 2 / 5 / 3;
+              display: flex;
+              justify-content: flex-end;
+              .btn__keep-shopping {
+                     margin-right: 20px;
+              }
+       }
+       .mail__done {
+              grid-area: 1 / 1 / 4 / 3;
+              text-align: center;
+              align-self: center;
+       }
+}
+.form-group {
+       padding: 0 20px;
+       row-gap: 40px;
+       column-gap: 20px;
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       grid-template-rows: repeat(3, 1fr);
+       &__label {
+              position: relative;
+       }
+       &__input {
+              height: 40px;
+              border: 0;
+              border: 1px solid rgb(132, 125, 125);
+              border-radius: 20px;
+              width: 100%;
+              height: 100%;
+              padding: 10px 20px;
+              outline: none;
+       }
+       &__placeholder {
+              position: absolute;
+              left: 20px;
+              top: 8px;
+              transform-origin: bottom left;
+              opacity: .35;
+              pointer-events: none;
+              transition: all 0.3s ease;
+              font-size: 15px;
+              &.active {
+                     transform: translateY(-150%) scale(.7);
+                     opacity: 1;
+              }
+       }
+       .form__item1 {
+              grid-area: 1 / 1 / 2 / 2;
+       }
+       .form__item2 {
+              grid-area: 1 / 2 / 2 / 3;
+       }
+       .form__item3 {
+              grid-area: 2 / 1 / 3 / 2;
+       }
+       .form__item4 {
+              grid-area: 3 / 1 / 4 / 2;
+       }
+       .form__item5 {
+              grid-area: 2 / 2 / 4 / 3;
+       }
+       .form__item6 {
+              display: none;    
+       }
+       input.error {
+              box-shadow: 0 0 3px red inset;
+              border: 1px solid rgba(255, 0, 0, 0.501);
+       }
+}
+.empty-block {
+       display: flex;
+       flex-direction: column;
+       display: none;
+       &.on {
+              display: block;
+              .empty-logo {
+                     width: 100%;
+                     margin: 30px 0;
+              }
+              .empty__title {
+                     @include adaptiv-font(28, 20);
+                     text-align: center;
+                     font-weight: 900;
+                     margin-bottom: 40px;
+                     color: #ed6917;
+              }
+       }
+}
+.spicy__btn {
+       display: block;
+       width: 50px;
+       height: 20px;
+       position: relative;
+       &:before {
+              content: "";
+              position: absolute;
+              background-image: url(../img/modal/spicy-before.svg);
+              width: 40px;
+              height: 40px;
+              left: -50px;
+              bottom: -5px;
+       }
+       &:after {
+              width: 30px;
+              height: 30px;
+              content: "";
+              position: absolute;
+              background-image: url(../img/modal/spicy-after.svg);
+              background-repeat: no-repeat;
+              right: -40px;
+              bottom: 0;
+       }
+       input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+              &:checked+.slider {
+                     background-color: rgb(255, 105, 0);
+              }
+              &:focus+.slider {}
+              &:checked+.slider:before {
+                     transform: translateX(25px);
+              }
+       }
+       .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              transition: .4s;
+              border-radius: 20px;
+              &:before {
+                     content: "";
+                     position: absolute;
+                     height: 18px;
+                     width: 18px;
+                     left: 4px;
+                     bottom: 1px;
+                     background-color: white;
+                     transition: .4s;
+                     border-radius: 50%;
+              }
+       }
+}
+@media (max-width:$md3+px) {
+       .popup {
+              .popup__content {
+                     width: 100%;
+                     border-radius: 0;
+                     &.on {
+                            width: 70%;
+                            border-radius: 20px;
+                     }
+                     .wish__list {
+                            .wish__item {
+                                   padding: 5px 10px;
+                                   grid-template-columns: repeat(7, 1fr);
+                                   grid-template-rows: repeat(2, 1fr);
+                            }
+                            .wish__img-wrapper {
+                                   grid-area: 1 / 1 / 2 / 3;
+                                   justify-self: center;
+                            }
+                            .wish__name {
+                                   grid-area: 1 / 3 / 2 / 7;
+                            }
+                            .wish__price {
+                                   grid-area: 2 / 3 / 3 / 5;
+                            }
+                            .wish__quantity {
+                                   grid-area: 2 / 1 / 3 / 3;
+                            }
+                            .wish-spicy {
+                                   grid-area: 2 / 5 / 3 / 7;
+                            }
+                            .wish__delete {
+                                   grid-area: 1 / 7 / 3 / 8;
+                            }
+                     }
+              }
+       }
+       .form__block {
+              padding: 0 20px;
+       }
+}
+@media (max-width:$md4+px) {
+       .form-group {
+              grid-template-columns: 1fr;
+              padding: 0 30px;
+              grid-template-rows: repeat(6, 1fr);
+              row-gap: 25px;
+              .form__item1 {
+                     grid-area: 1 / 1 / 2 / 2;
+              }
+              .form__item2 {
+                     grid-area: 2 / 1 / 3 / 2;
+              }
+              .form__item3 {
+                     grid-area: 3 / 1 / 4 / 2;
+              }
+              .form__item4 {
+                     grid-area: 4 / 1 / 5 / 2;
+              }
+              .form__item5 {
+                     grid-area: 5 / 1 / 7 / 2;
+              }
+              .bottom-popup {
+                     grid-area: 7 / 1 / 8 / 2;
+              }
+       }
+       .popup {
+              .popup__content {
+                     .header-popup {
+                            .logo-name img {
+                                   width: 100px;
+                                   height: auto;
+                            }
+                     }
+                     .wish__list {
+                            .wish__item {
+                                   grid-template-columns: repeat(3, 1fr);
+                                   grid-template-rows: repeat(3, 1fr);
+                            }
+                            .wish__img-wrapper {
+                                   grid-area: 1 / 1 / 2 / 2;
+                            }
+                            .wish__name {
+                                   font-size: 18px;
+                                   grid-area: 1 / 2 / 2 / 4;
+                            }
+                            .wish__price {
+                                   grid-area: 2 / 1 / 3 / 2;
+                                   font-size: 20px;
+                                   font-weight: 700;
+                            }
+                            .wish__quantity {
+                                   grid-area: 3 / 3 / 4 / 4;
+                                   height: 30px;
+                                   button {
+                                          width: 30px;
+                                          line-height: 30px;
+                                   }
+                                   input {
+                                          height: 100%;
+                                   }
+                            }
+                            .wish-spicy {
+                                   grid-area: 3 / 1 / 4 / 3;
+                            }
+                            .wish__delete {
+                                   grid-area: 2 / 3 / 3 / 4;
+                            }
+                     }
+              }
+       }
+}
